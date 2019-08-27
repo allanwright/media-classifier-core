@@ -10,7 +10,7 @@ setuptools.setup(
     description='media-classifier shared code package',
     long_description=long_description,
     package_dir={'': 'src'},
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages('src'),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
