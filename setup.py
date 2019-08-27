@@ -9,6 +9,7 @@ setuptools.setup(
     author='Allan Wright',
     description='media-classifier shared code package',
     long_description=long_description,
+    package_dir={'', 'src'},
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
