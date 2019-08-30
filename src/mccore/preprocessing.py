@@ -1,7 +1,7 @@
 import re
 
 def prepare_input(name):
-    '''Processes a filename in preparation for classification by a model.
+    '''Prepares the name of a file for classification or prediction.
     '''
     # Remove commas
     name = name.replace(',', '')
@@ -13,15 +13,11 @@ def prepare_input(name):
     name = name.split('/')[-1]
 
     # Normalize word separators
-    name = name.replace('.', ' ')
-    name = name.replace('_', ' ')
-    name = name.replace('-', ' ')
-    name = name.replace('[', ' ')
-    name = name.replace(']', ' ')
-    name = name.replace('+', ' ')
+    for c in '._-[]+':
+        name = name.replace(c, ' ')
 
     # Remove any remaining punctuation and non word characters
-    for c in '\'\"`~!@#$%^&*()-_+=[]|;:<>,./?{}':
+    for c in '\'\"`~!@#$%^&*()=|;:<>,/?{}':
         name = name.replace(c, '')
 
     # Split season and episode numbers
