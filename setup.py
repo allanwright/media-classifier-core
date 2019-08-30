@@ -4,10 +4,10 @@ with open('README.md', 'r') as f:
     long_description = f.read()
 
 setuptools.setup(
-    name='mcshared',
+    name='mccore',
     version='0.0.1',
     author='Allan Wright',
-    description='media-classifier shared code package',
+    description='media-classifier-core package',
     long_description=long_description,
     package_dir={'': 'src'},
     packages=setuptools.find_packages('src'),

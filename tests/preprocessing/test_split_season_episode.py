@@ -1,4 +1,4 @@
-from mcshared import preprocessing
+from mccore import preprocessing
 
 def test_split_season_episode_empty():
     assert preprocessing.prepare_input('') == ''

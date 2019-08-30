@@ -1,4 +1,4 @@
-from mcshared import preprocessing
+from mccore import preprocessing
 
 def test_prepare_input_removes_commas():
     assert preprocessing.prepare_input('a,a,a') == 'aaa'
