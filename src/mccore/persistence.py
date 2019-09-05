@@ -9,7 +9,7 @@ def bin_to_obj(path):
     Returns:
         Object: The object.
     '''
-    with open(path, 'r') as bin_file:
+    with open(path, 'rb') as bin_file:
         return load(bin_file)
 
 def obj_to_bin(obj, path):
@@ -19,7 +19,7 @@ def obj_to_bin(obj, path):
         value (object): The object to save.
         path (string): The path to save the object to.
     '''
-    with open(path, 'w') as bin_file:
+    with open(path, 'wb') as bin_file:
         dump(obj, bin_file)
 
 def obj_to_json(obj, path):
