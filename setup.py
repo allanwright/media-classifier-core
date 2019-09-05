@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name='mccore',
-    version='0.0.1',
+    version='0.0.2',
     author='Allan Wright',
     description='media-classifier-core package',
     long_description=long_description,
