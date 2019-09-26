@@ -1,3 +1,4 @@
+import importlib.resources as resources
 import numpy as np
 from mccore import persistence
 from mccore import prediction
@@ -24,9 +25,9 @@ class Classifier:
     def load_default(cls):
         ''' Initializes a new instance of the Classifier object using model included with the package.
         '''
-        vectorizer = persistence.bin_to_obj('models/cls_base_vec.pickle')
-        model = persistence.bin_to_obj('models/cls_base_mdl.pickle')
-        labels = persistence.json_to_obj('models/label_dictionary.json')
+        vectorizer = persistence.bin_res_to_obj('cls_base_vec.pickle')
+        model = persistence.bin_res_to_obj('cls_base_mdl.pickle')
+        labels = persistence.json_res_to_obj('label_dictionary.json')
         return cls(vectorizer, model, labels)
     
     def predict(self, name):

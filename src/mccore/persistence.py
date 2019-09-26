@@ -1,4 +1,5 @@
 import json
+import importlib.resources as resources
 from pickle import dump, load
 
 def bin_to_obj(path):
@@ -6,11 +7,48 @@ def bin_to_obj(path):
 
     Args:
         path (string): The path to load the object from.
+    
     Returns:
         Object: The object.
     '''
     with open(path, 'rb') as bin_file:
         return load(bin_file)
+
+def bin_res_to_obj(path):
+    '''Deserializes a binary package resource into an object.
+
+    Args:
+        path (string): The path to load the object from.
+    
+    Returns:
+        Object: The object.
+    '''
+    with resources.path(__package__, path) as p:
+        return bin_to_obj(p)
+
+def json_to_obj(path):
+    '''Deserializes a json package into an object.
+
+    Args:
+        path (string): The file path to read from.
+    
+    Returns:
+        Object: The object.
+    '''
+    with open(path, 'r') as json_file:
+        return json.loads(json_file.read())
+
+def json_res_to_obj(path):
+    '''Deserializes a json package resource into an object.
+
+    Args:
+        path (string): The file path to read from.
+    
+    Returns:
+        Object: The object.
+    '''
+    with resources.path(__package__, path) as p:
+        return json_to_obj(p)
 
 def obj_to_bin(obj, path):
     '''Saves an object to the specified path.
@@ -32,12 +70,3 @@ def obj_to_json(obj, path):
     obj_json = json.dumps(obj)
     with open(path, 'w') as json_file:
         json_file.write(obj_json)
-
-def json_to_obj(path):
-    '''Deserializes a json file into an object.
-
-    Args:
-        path (string): The file path to read from.
-    '''
-    with open(path, 'r') as json_file:
-        return json.loads(json_file.read())
