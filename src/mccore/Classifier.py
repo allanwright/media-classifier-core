@@ -1,4 +1,3 @@
-import importlib.resources as resources
 import numpy as np
 from mccore import persistence
 from mccore import prediction
