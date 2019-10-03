@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name='mccore',
-    version='0.0.11',
+    version='0.0.12',
     author='Allan Wright',
     description='media-classifier-core package',
     long_description=long_description,
@@ -13,7 +13,8 @@ setuptools.setup(
     packages=setuptools.find_packages('src'),
     install_requires=[
         'numpy',
-        'sklearn'
+        'sklearn',
+        'importlib_resources ; python_version<"3.7"'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
