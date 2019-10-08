@@ -26,7 +26,7 @@ class Classifier:
         '''
         vectorizer = persistence.bin_res_to_obj('cls_base_vec.pickle')
         model = persistence.bin_res_to_obj('cls_base_mdl.pickle')
-        labels = persistence.json_res_to_obj('label_dictionary.json')
+        labels = prediction.get_labels()
         return cls(vectorizer, model, labels)
     
     def predict(self, name):
