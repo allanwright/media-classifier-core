@@ -18,6 +18,6 @@ def get_labels():
     '''Gets the label dictionary.
 
     Returns:
-        labels (dict): The label dictionary.
+        dictionary: The label dictionary.
     '''
     return persistence.json_res_to_obj('label_dictionary.json')

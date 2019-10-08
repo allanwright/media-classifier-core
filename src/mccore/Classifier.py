@@ -36,7 +36,8 @@ class Classifier:
             name (string): The name of the file to classify.
         
         Returns:
-        
+            label (string): The predicted label.
+            estimate (float): The probability estimate.
         '''
         x = preprocessing.prepare_input(name)
         x = self.vectorizer.transform(np.array([x]))

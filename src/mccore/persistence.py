@@ -8,7 +8,7 @@ def bin_to_obj(path):
         path (string): The path to load the object from.
     
     Returns:
-        Object: The object.
+        object: The object.
     '''
     with open(path, 'rb') as bin_file:
         return load(bin_file)
@@ -20,7 +20,7 @@ def bin_res_to_obj(path):
         path (string): The path to load the object from.
     
     Returns:
-        Object: The object.
+        object: The object.
     '''
     try:
         from importlib.resources import path as resource_path
@@ -38,7 +38,7 @@ def json_to_obj(path):
         path (string): The file path to read from.
     
     Returns:
-        Object: The object.
+        object: The object.
     '''
     with open(path, 'r') as json_file:
         return json.loads(json_file.read())
@@ -50,7 +50,7 @@ def json_res_to_obj(path):
         path (string): The file path to read from.
     
     Returns:
-        Object: The object.
+        object: The object.
     '''
     try:
         from importlib.resources import path as resource_path
