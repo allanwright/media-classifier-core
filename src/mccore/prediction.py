@@ -9,10 +9,15 @@ def get_label(proba, labels):
         labels (dictionary): The label dictionary.
     
     Returns:
-        label (string): The label associated with the class having the highest probability estimate.
+        label (object): The label associated with the class having the highest probability estimate.
         esimate (float): The probability estimate.
     '''
-    return (labels[str(np.argmax(proba))], np.max(proba))
+    label_id = np.argmax(proba)
+    label = {
+        "id": label_id,
+        "name": labels[str(label_id)]
+    }
+    return (label, np.max(proba))
 
 def get_labels():
     '''Gets the label dictionary.
