@@ -21,7 +21,7 @@ class EntityRecognizer:
         ''' Initializes a new instance of the Classifier object using model included with the package.
         
         '''
-        nlp = ner.get_model()
+        nlp, _ = ner.get_model()
         nlp.from_bytes(persistence.bin_res_to_obj('ner_mdl.pickle'))
         return cls(nlp)
     

@@ -5,8 +5,9 @@ def get_model():
 
     Returns:
         object: The model.
+        object: The ner pipeline step.
     '''
     nlp = spacy.blank('en')
     ner = nlp.create_pipe('ner')
     nlp.add_pipe(ner, last=True)
-    return nlp
+    return (nlp, ner)
