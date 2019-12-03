@@ -34,7 +34,7 @@ def split_season_episode(name):
         [r'(?P<sid>\d+)x(?P<eid>\d+)', 's{sid} e{eid}'] #01x01
     ]
     for pattern in patterns:
-        match = re.search(pattern[0], name)
+        match = re.search(pattern[0], name, re.IGNORECASE)
         if match != None:
             name = name.replace(
                 match.group(0),
