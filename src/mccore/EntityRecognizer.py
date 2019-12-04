@@ -35,18 +35,27 @@ class EntityRecognizer:
         Returns:
             list: The list of tuples containing the entity and associated value.
         '''
+        SEP = ' '
         x = preprocessing.prepare_input(name)
         x_out = postprocessing.prepare_output(name)
-        x_out = x_out.split(' ')
+        x_out = x_out.split(SEP)
         y = self.model(x)
-        entities = [(e.label_, e.text, e.start) for e in y.ents]
+        y = [(e.label_, e.text, e.start) for e in y.ents]
 
-        # TODO: This works but I can make it cleaner
-        merged = {}
-        for e in entities:
-            label, _, start = e
-            if label in merged:
-                merged[label] = merged[label] + ' ' + x_out[start]
+        # Merge entities
+        y_merged = {}
+        for (label, _, start) in y:
+            if label in y_merged:
+                y_merged[label] = y_merged[label] + SEP + x_out[start]
             else:
-                merged[label] = x_out[start]
-        return [(i, merged[i]) for i in merged]
+                y_merged[label] = x_out[start]
+        
+        # Remove leading s and e from season and episode numbers
+        SID = 'season_id'
+        EID = 'episode_id'
+        if SID in y_merged:
+            y_merged[SID] = int(y_merged[SID].lstrip('sS'))
+        if EID in y_merged:
+            y_merged[EID] = int(y_merged[EID].lstrip('eE'))
+
+        return [(i, y_merged[i]) for i in y_merged]
