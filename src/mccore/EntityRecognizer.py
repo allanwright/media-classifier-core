@@ -3,6 +3,7 @@ from mccore import ner
 from mccore import persistence
 from mccore import preprocessing
 from mccore import postprocessing
+from titlecase import titlecase
 
 class EntityRecognizer:
     ''' Defines a named entity recognizer.
@@ -52,10 +53,18 @@ class EntityRecognizer:
         
         # Remove leading s and e from season and episode numbers
         SID = 'season_id'
-        EID = 'episode_id'
         if SID in y_merged:
             y_merged[SID] = int(y_merged[SID].lstrip('sS'))
+        EID = 'episode_id'
         if EID in y_merged:
             y_merged[EID] = int(y_merged[EID].lstrip('eE'))
-
+        
+        # Title case title and episode names
+        TITLE = 'title'
+        if TITLE in y_merged:
+            y_merged[TITLE] = titlecase(y_merged[TITLE])
+        EPNAME = 'episode_name'
+        if EPNAME in y_merged:
+             y_merged[EPNAME] = titlecase(y_merged[EPNAME])
+                    
         return [(i, y_merged[i]) for i in y_merged]
