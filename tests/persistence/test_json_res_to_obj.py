@@ -10,4 +10,4 @@ def test_json_res_to_obj_empty_path_throws_exception():
         persistence.json_res_to_obj('')
 
 def test_json_res_to_obj_not_null():
-    assert persistence.json_res_to_obj('label_dictionary.json') != None
+    assert persistence.json_res_to_obj('label_dictionary.json') is not None

@@ -1,7 +1,11 @@
+'''Named entity recognition.
+
+'''
+
 import spacy
 
 def get_model():
-    ''' Builds and returns a blank named entity recognition model.
+    '''Builds and returns a blank named entity recognition model.
 
     Returns:
         object: The model.

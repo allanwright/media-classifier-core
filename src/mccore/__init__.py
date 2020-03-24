@@ -1,4 +1,4 @@
-from .Classifier import Classifier
-from .EntityRecognizer import EntityRecognizer
+import mccore.classifier
+import mccore.entity_recognizer
 
 name = 'mccore'

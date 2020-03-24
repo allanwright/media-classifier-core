@@ -1,12 +1,17 @@
-import json
+'''Persistence for models and related data.
+
+'''
+
 from pickle import dump, load
+
+import json
 
 def bin_to_obj(path):
     '''Deserializes a binary file into an object.
 
     Args:
         path (string): The path to load the object from.
-    
+
     Returns:
         object: The object.
     '''
@@ -18,16 +23,18 @@ def bin_res_to_obj(path):
 
     Args:
         path (string): The path to load the object from.
-    
+
     Returns:
         object: The object.
     '''
     try:
+        # pylint: disable=import-outside-toplevel
         from importlib.resources import path as resource_path
     except ImportError:
         # Fallback for python < 3.7
+        # pylint: disable=import-outside-toplevel
         from importlib_resources import path as resource_path
-    
+
     with resource_path(__package__, path) as p:
         return bin_to_obj(p)
 
@@ -36,7 +43,7 @@ def json_to_obj(path):
 
     Args:
         path (string): The file path to read from.
-    
+
     Returns:
         object: The object.
     '''
@@ -48,16 +55,18 @@ def json_res_to_obj(path):
 
     Args:
         path (string): The file path to read from.
-    
+
     Returns:
         object: The object.
     '''
     try:
+        # pylint: disable=import-outside-toplevel
         from importlib.resources import path as resource_path
     except ImportError:
         # Fallback for python < 3.7
+        # pylint: disable=import-outside-toplevel
         from importlib_resources import path as resource_path
-    
+
     with resource_path(__package__, path) as p:
         return json_to_obj(p)
 

@@ -1,14 +1,19 @@
+'''
+Machine learning project for filename based media classification and named
+entity recognition.
+'''
+
 import setuptools
 
 with open('README.md', 'r') as f:
-    long_description = f.read()
+    LONG_DESCRIPTION = f.read()
 
 setuptools.setup(
     name='mccore',
-    version='1.0.3',
+    version='1.0.4',
     author='Allan Wright',
     description='media-classifier-core package',
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     package_dir={'': 'src'},
     packages=setuptools.find_packages('src'),
     install_requires=[

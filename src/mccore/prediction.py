@@ -1,4 +1,9 @@
+'''Helper methods for making classification predictions.
+
+'''
+
 import numpy as np
+
 from mccore import persistence
 
 def get_label(proba, labels):
@@ -7,7 +12,7 @@ def get_label(proba, labels):
     Args:
         proba (array like): The estimated class probability estimates.
         labels (dictionary): The label dictionary.
-    
+
     Returns:
         label (object): The label associated with the class having the highest probability estimate.
         esimate (float): The probability estimate.
