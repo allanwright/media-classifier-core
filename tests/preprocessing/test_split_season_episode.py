@@ -15,9 +15,18 @@ def test_split_season_episode_invalid():
 def test_split_season_episode_standard_format(input, expected):
     assert preprocessing.split_season_episode(input) == expected
 
-@pytest.mark.parametrize('input, expected',
+@pytest.mark.parametrize(
+    'input, expected',
     [('01x01', 's01 e01'),
-    ('01X01', 's01 e01'),
-    ('9999x9999', 's9999 e9999')])
-def test_split_season_episode_alternate_format(input, expected):
+     ('01X01', 's01 e01'),
+     ('9999x9999', 's9999 e9999')])
+def test_split_season_episode_x_format(input, expected):
+    assert preprocessing.split_season_episode(input) == expected
+
+@pytest.mark.parametrize(
+    'input, expected',
+    [('s01 ep01', 's01 e01'),
+     ('S01 EP01', 's01 e01'),
+     ('S9999 Ep9999', 's9999 e9999')])
+def test_split_season_episode_ep_format(input, expected):
     assert preprocessing.split_season_episode(input) == expected
