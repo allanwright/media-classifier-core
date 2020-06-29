@@ -57,17 +57,32 @@ class EntityRecognizer:
         # Merge entities
         y_merged = {}
         for (label, _, start) in y:
-            if label in y_merged:
-                y_merged[label] = y_merged[label] + SEP + x_out[start]
+            if len(x_out) != len(y):
+                # The named entity recognition model sometimes splits words
+                # If the number of entities does not equal the number of words
+                # then I can only merge from y
+                word = y[start][1]
             else:
-                y_merged[label] = x_out[start]
+                # Get word with original punctuation
+                word = x_out[start]
+
+            if label in y_merged:
+                y_merged[label] = y_merged[label] + SEP + word
+            else:
+                y_merged[label] = word
 
         # Remove leading s and e from season and episode numbers
         if SID in y_merged:
-            y_merged[SID] = int(y_merged[SID].lstrip('sS'))
+            try:
+                y_merged[SID] = int(y_merged[SID].lstrip('sS'))
+            except ValueError:
+                y_merged[SID] = y_merged[SID].lstrip('sS')
 
         if EID in y_merged:
-            y_merged[EID] = int(y_merged[EID].lstrip('eE'))
+            try:
+                y_merged[EID] = int(y_merged[EID].lstrip('eE'))
+            except ValueError:
+                y_merged[EID] = y_merged[EID].lstrip('eE')
 
         # Title case title and episode names
         if TITLE in y_merged:
