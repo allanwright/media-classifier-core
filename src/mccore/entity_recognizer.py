@@ -57,14 +57,7 @@ class EntityRecognizer:
         # Merge entities
         y_merged = {}
         for (label, _, start) in y:
-            if len(x_out) != len(y):
-                # The named entity recognition model sometimes splits words
-                # If the number of entities does not equal the number of words
-                # then I can only merge from y
-                word = y[start][1]
-            else:
-                # Get word with original punctuation
-                word = x_out[start]
+            word = x_out[start]
 
             if label in y_merged:
                 y_merged[label] = y_merged[label] + SEP + word
