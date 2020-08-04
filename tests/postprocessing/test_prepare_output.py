@@ -25,7 +25,7 @@ def test_prepare_output_removes_non_word_characters():
 
 def test_prepare_output_retains_punctuation():
     assert postprocessing.prepare_output(
-        '\'!@$%&?') == '\'!@$%&?'
+        '\'!@$%?') == '\'!@$%?'
 
 def test_prepare_output_splits_season_episode():
     assert postprocessing.prepare_output('s01e01') == 's01 e01'
@@ -36,6 +36,15 @@ def test_prepare_output_splits_season_episode():
     ('file  ext', 'file ext'),
     ('file ext', 'file ext')])
 def test_prepare_output_removes_extraneous_spaces(input, expected):
+    assert postprocessing.prepare_output(input) == expected
+
+@pytest.mark.parametrize(
+    'input, expected',
+    [('Me & u', 'Me and u'),
+    ('Me&u', 'Me and u'),
+    ('Me&', 'Me and'),
+    ('&u', 'and u')])
+def test_prepare_output_converts_ampersand_to_and(input, expected):
     assert postprocessing.prepare_output(input) == expected
 
 def test_prepare_output_movie():

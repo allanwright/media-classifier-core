@@ -18,6 +18,9 @@ def prepare_output(name):
     for char in '._-[]+':
         name = name.replace(char, ' ')
 
+    # Replace ampersand with and
+    name = name.replace('&', ' and ')
+
     # Remove any non word characters
     for char in '\"`~#^*()-_+=[]|;:<>,./{}':
         name = name.replace(char, '')

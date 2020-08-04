@@ -21,8 +21,11 @@ def prepare_input(name):
     for char in '._-[]+':
         name = name.replace(char, ' ')
 
+    # Replace ampersand with and
+    name = name.replace('&', ' and ')
+
     # Remove any remaining punctuation and non word characters
-    for char in '\'\"`~!@#$%^&*()=|;:<>,/?{}':
+    for char in '\'\"`~!@#$%^*()=|;:<>,/?{}':
         name = name.replace(char, '')
 
     # Split season and episode numbers
