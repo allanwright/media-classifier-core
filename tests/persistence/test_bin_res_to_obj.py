@@ -10,4 +10,4 @@ def test_bin_res_to_obj_empty_path_throws_exception():
         persistence.bin_res_to_obj('')
 
 def test_bin_res_to_obj_not_null():
-    assert persistence.bin_res_to_obj('cls_base_mdl.pickle') is not None
+    assert persistence.bin_res_to_obj('classifier_mdl.pickle') is not None

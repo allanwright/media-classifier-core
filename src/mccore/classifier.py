@@ -31,8 +31,8 @@ class Classifier:
            included with the package.
 
         '''
-        vectorizer = persistence.bin_res_to_obj('cls_base_vec.pickle')
-        model = persistence.bin_res_to_obj('cls_base_mdl.pickle')
+        vectorizer = persistence.bin_res_to_obj('classifier_vec.pickle')
+        model = persistence.bin_res_to_obj('classifier_mdl.pickle')
         labels = prediction.get_labels()
         return cls(vectorizer, model, labels)
 
