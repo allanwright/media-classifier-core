@@ -51,12 +51,12 @@ class EntityRecognizer:
         x = preprocessing.prepare_input(name)
         x_out = postprocessing.prepare_output(name)
         y = self.model(x)
-        y = [(e.label_, e.text, e.start_char, e.end_char) for e in y.ents]
+        y = [(e.label_, e.start) for e in y.ents]
 
         # Merge entities
         y_merged = {}
-        for (label, _, start, end) in y:
-            word = x_out[start:end]
+        for (label, start) in y:
+            word = x_out.split()[start]
 
             if label in y_merged:
                 y_merged[label] = y_merged[label] + SEP + word
