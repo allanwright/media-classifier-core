@@ -53,7 +53,7 @@ def test_prepare_output_removes_extraneous_spaces(name, expected):
      ('Me&', 'Me and'),
      ('&u', 'and u')])
 def test_prepare_output_converts_ampersand_to_and(name, expected):
-    assert postprocessing.prepare_output(input) == expected
+    assert postprocessing.prepare_output(name) == expected
 
 def test_prepare_output_movie():
     assert postprocessing.prepare_output(
