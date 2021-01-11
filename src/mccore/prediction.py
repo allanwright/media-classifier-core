@@ -4,8 +4,6 @@
 
 import numpy as np
 
-from mccore import persistence
-
 def get_label(proba, labels):
     '''Gets the label from the specified class probability estimates.
 
@@ -23,11 +21,3 @@ def get_label(proba, labels):
         "name": labels[str(label_id)]
     }
     return (label, np.max(proba))
-
-def get_labels():
-    '''Gets the label dictionary.
-
-    Returns:
-        dictionary: The label dictionary.
-    '''
-    return persistence.json_res_to_obj('label_dictionary.json')

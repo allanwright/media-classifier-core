@@ -18,26 +18,6 @@ def bin_to_obj(path):
     with open(path, 'rb') as bin_file:
         return load(bin_file)
 
-def bin_res_to_obj(path):
-    '''Deserializes a binary package resource into an object.
-
-    Args:
-        path (string): The path to load the object from.
-
-    Returns:
-        object: The object.
-    '''
-    try:
-        # pylint: disable=import-outside-toplevel
-        from importlib.resources import path as resource_path
-    except ImportError:
-        # Fallback for python < 3.7
-        # pylint: disable=import-outside-toplevel
-        from importlib_resources import path as resource_path
-
-    with resource_path(__package__, path) as p:
-        return bin_to_obj(p)
-
 def json_to_obj(path):
     '''Deserializes a json package into an object.
 
@@ -49,26 +29,6 @@ def json_to_obj(path):
     '''
     with open(path, 'r') as json_file:
         return json.loads(json_file.read())
-
-def json_res_to_obj(path):
-    '''Deserializes a json package resource into an object.
-
-    Args:
-        path (string): The file path to read from.
-
-    Returns:
-        object: The object.
-    '''
-    try:
-        # pylint: disable=import-outside-toplevel
-        from importlib.resources import path as resource_path
-    except ImportError:
-        # Fallback for python < 3.7
-        # pylint: disable=import-outside-toplevel
-        from importlib_resources import path as resource_path
-
-    with resource_path(__package__, path) as p:
-        return json_to_obj(p)
 
 def obj_to_bin(obj, path):
     '''Saves an object to the specified path.

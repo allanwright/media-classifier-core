@@ -3,11 +3,15 @@
 
 import pytest
 
+from mccore import persistence
+from mccore import ner
 from mccore.entity_recognizer import EntityRecognizer
 
 @pytest.fixture(name='model')
 def fixture_model():
-    return EntityRecognizer.load_default()
+    nlp, _ = ner.get_model()
+    nlp.from_bytes(persistence.bin_to_obj('models/ner_mdl.pickle'))
+    return EntityRecognizer(nlp)
 
 @pytest.mark.parametrize(
     'name, expected',
