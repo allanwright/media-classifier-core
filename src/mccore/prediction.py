@@ -17,7 +17,7 @@ def get_label(proba, labels):
     '''
     label_id = np.argmax(proba)
     label = {
-        "id": label_id,
+        "id": int(label_id),
         "name": labels[str(label_id)]
     }
     return (label, np.max(proba))
