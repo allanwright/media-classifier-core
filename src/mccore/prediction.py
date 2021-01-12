@@ -4,20 +4,21 @@
 
 import numpy as np
 
-def get_label(proba, labels):
-    '''Gets the label from the specified class probability estimates.
+def get_class(proba, labels):
+    '''Gets the class label from the specified class probability estimates.
 
     Args:
         proba (array like): The estimated class probability estimates.
         labels (dictionary): The label dictionary.
 
     Returns:
-        label (object): The label associated with the class having the highest probability estimate.
-        esimate (float): The probability estimate.
+        class (object): The class label and associated probability estimate.
     '''
     label_id = np.argmax(proba)
-    label = {
-        "id": int(label_id),
-        "name": labels[str(label_id)]
+    return {
+        "label": {
+            "id": int(label_id),
+            "name": labels[str(label_id)]
+        },
+        "probability": float(np.max(proba))
     }
-    return (label, np.max(proba))
